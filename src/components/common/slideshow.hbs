@@ -1,0 +1,9 @@
+<ul data-slideshow>
+  {{#each slides}}
+  <li data-slide="{{@index}}" data-active="false">
+    <div class="content">
+      {{ fileInclude file }}
+    </div>
+  </li>
+  {{/each}}
+</ul>

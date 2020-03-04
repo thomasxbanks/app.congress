@@ -1,0 +1,37 @@
+$duration: 600ms;
+
+@import 'reset';
+@import 'animations';
+@import 'modal';
+@import 'slideshow';
+@import 'screensaver';
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  touch-action: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+}
+
+[data-menu][data-active="true"] {
+  text-decoration: underline;
+}
+
+.site-header,
+.site-footer {
+  padding: 1rem;
+}
+
+.site-header nav button:not(:last-of-type) {
+  margin-right: 0.5rem;
+}
+
+button:focus {
+  outline: none;
+}

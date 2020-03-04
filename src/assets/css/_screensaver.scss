@@ -1,0 +1,17 @@
+[data-screensaver] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 126000;
+  background-color: cadetblue;
+}
+
+[data-screensaver][data-active="false"] {
+  transform: scale(0);
+}
+
+[data-screensaver][data-active="true"] {
+  transform: scale(1);
+}

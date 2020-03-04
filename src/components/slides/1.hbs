@@ -1,0 +1,15 @@
+<section data-title>
+  <h1>
+    Menu!
+  </h1>
+</section>
+
+<section data-content>
+  <nav>
+    {{#each slides}}
+    <button data-menu data-uid="{{@index}}" data-active="true">{{nav}}</button>
+    {{/each}}
+  </nav>
+</section>
+
+<section data-footer></section>

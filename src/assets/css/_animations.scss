@@ -1,0 +1,166 @@
+.moveToLeft {
+  animation: moveToLeft $duration ease both;
+  animation-delay: $duration / 2;
+}
+
+@keyframes moveToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.moveUp {
+  animation: moveUp $duration ease both;
+  animation-delay: $duration;
+}
+
+@keyframes moveUp {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.moveDown {
+  animation: moveDown $duration ease both;
+  animation-delay: $duration;
+}
+
+@keyframes moveDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.moveToRight {
+  animation: moveToRight $duration ease both;
+  animation-delay: $duration / 2;
+}
+
+@keyframes moveToRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.scaleUp {
+  animation: scaleUp $duration ease both;
+  animation-delay: $duration / 2;
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.moveOffScreenLeft {
+  animation: moveOffScreenLeft $duration ease both;
+}
+
+@keyframes moveOffScreenLeft {
+  to {
+    left: -100%;
+  }
+}
+
+.moveOnScreenLeft {
+  animation: moveOnScreenLeft $duration ease both;
+}
+
+@keyframes moveOnScreenLeft {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.moveOnScreenRight {
+  animation: moveOnScreenRight $duration ease both;
+}
+
+@keyframes moveOnScreenRight {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+.moveOffScreenRight {
+  animation: moveOffScreenRight $duration ease both;
+}
+
+@keyframes moveOffScreenRight {
+  to {
+    left: 100%;
+  }
+}
+
+.moveOnScreen {
+  animation: moveOnScreen $duration ease both;
+}
+
+@keyframes moveOnScreen {
+  to {
+    left: 0;
+  }
+}
+
+.bounceUp {
+  animation: bounceUp #{$duration / 4} ease both;
+}
+
+@keyframes bounceUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{copy.title}}</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-rotation-container data-rotated="false">
+  {{ fileInclude 'src/components/common/header.hbs' }}
+
+  <main>
+    {{ fileInclude 'src/components/common/slideshow.hbs' }}
+  </main>
+
+  {{ fileInclude 'src/components/common/footer.hbs' }}
+
+  {{ fileInclude 'src/components/common/screensaver.hbs' }}
+  {{ fileInclude 'src/components/common/references.hbs' }}
+
+  <script src="js/index.js"></script>
+  <script src="vendor/index.js"></script>
+</body>
+
+</html>
