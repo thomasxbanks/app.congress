@@ -21,6 +21,7 @@
 .overlay {
   z-index: 124900;
   background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0.125rem);
 }
 
 .modal_container[data-active="false"] {
