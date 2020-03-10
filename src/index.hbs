@@ -9,8 +9,14 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body data-rotation-container data-rotated="false">
+<!-- build:device -->
+
+<body data-environment="">
+  <!-- endbuild -->
+
   {{ fileInclude 'src/components/common/header.hbs' }}
+
+  {{ fileInclude 'src/components/common/rotation-controls.hbs' }}
 
   <main>
     {{ fileInclude 'src/components/common/slideshow.hbs' }}

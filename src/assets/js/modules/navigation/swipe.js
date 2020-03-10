@@ -45,7 +45,7 @@ const init = () => {
     zone: document.querySelector('[data-slideshow]'),
     touchstartX: 0,
     touchendX: 0,
-    minimumSwipeDistance: 250,
+    minimumSwipeDistance: window.innerWidth / 5.75,
   };
 
   options.zone.addEventListener('touchstart', (event) => {

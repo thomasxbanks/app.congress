@@ -35,3 +35,26 @@ body {
 button:focus {
   outline: none;
 }
+
+[data-rotation-container] {
+  overflow: hidden;
+  transition: transform ease 300ms;
+}
+
+[data-rotation-container][data-rotated="true"] {
+  transform: rotate(180deg);
+}
+
+button[data-rotate] {
+  position: fixed;
+
+  &:first-of-type {
+    top: 0;
+    right: 0;
+  }
+
+  &:last-of-type {
+    bottom: 0;
+    left: 0;
+  }
+}

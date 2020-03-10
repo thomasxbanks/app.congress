@@ -141,7 +141,7 @@ export const animateSlides = async (elements, id) => {
 export const slideConfig = {
   first: 0,
   last: [...document.querySelectorAll('[data-slide]')].length - 1,
-  isRotated: document.querySelector('[data-rotation-container]').dataset.rotated === 'true',
+  isRotated: document.querySelector('[data-rotation-container]') ? document.querySelector('[data-rotation-container]').dataset.rotated === 'true' : false,
 };
 
 export const disableMenus = () => {
