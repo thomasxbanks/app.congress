@@ -2,8 +2,11 @@ import disableButton from 'lxl.utils/make-button-is-disabled';
 import enableButton from 'lxl.utils/make-button-not-disabled';
 import makeElementIsActive from 'lxl.utils/make-element-is-active';
 import makeElementNotActive from 'lxl.utils/make-element-not-active';
+import slides from '../../../../slides';
 import config from '../../config';
+import { trackingLogEvent } from '../tracking';
 import { moveSlideOffLeft, moveSlideOffRight, moveSlideOnLeft, moveSlideOnRight } from './animations';
+
 
 export const revealContent = (element) => {
   const title = element.querySelector('[data-title]');
@@ -74,15 +77,15 @@ export const handleButtonDisability = () => {
   });
 };
 
-export const animateSlides = async (slides, id) => {
+export const animateSlides = async (elements, id) => {
   // Log for debugging
-  // console.log('animateSlides', currentElement.dataset.id, targetElement.dataset.id);
+  console.log('animateSlides', slides[id.target].tracking);
 
   // Define variables for calculations
   const currentSlideID = id.current;
   const targetSlideID = id.target;
-  const currentElement = slides.current;
-  const targetElement = slides.target;
+  const currentElement = elements.current;
+  const targetElement = elements.target;
 
   // Control the animation direction
   if (targetSlideID > currentSlideID) {
@@ -127,12 +130,15 @@ export const animateSlides = async (slides, id) => {
   // Enable new slide
   await makeElementIsActive(targetElement);
 
+  // Tracking
+  await trackingLogEvent(slides[targetSlideID].tracking, 'page');
+
   // Disable/enable navigation
   await handleButtonDisability();
 };
 
 
-export const slides = {
+export const slideConfig = {
   first: 0,
   last: [...document.querySelectorAll('[data-slide]')].length - 1,
   isRotated: document.querySelector('[data-rotation-container]').dataset.rotated === 'true',

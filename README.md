@@ -108,6 +108,33 @@ Available options:
 
 The actual code for the animations is in `assets/css/_animations.scss` where you can add your own custom animations.
 
+### Tracking
+
+Locally-stored tracking is available using the [Lx Labs Tracking Tool](https://gitlab.havaslynx.com/lxlabs/tracking-tool).
+
+Full instructions are available in the [README.md](https://gitlab.havaslynx.com/lxlabs/tracking-tool/blob/master/README.md) for the Tracking Tool itself.
+
+#### Tracked events
+
+- `session.start`: A new session is created when the screensaver is de-activated
+- `session.end`: A session is ended when the screensaver is activated
+- `page`: When a page is selected, either using the menu, navigation, or swiping, the page's name is logged
+- `modal.start`: When the references modal is opened
+- `modal.end`: When the references modal is closed
+
+New events can be registered by adding the tracking code to the function being run. The date/time stamp is added automatically.
+
+##### Example code
+```js
+    const openModal = async (modalName) => {
+        const element = document.querySelector(`[data-modal="${ modalName }"]`);
+        await makeElementIsActive(element);
+        const eventName = 'modal.open';
+        const eventValue = modalName;
+        await trackingLogEvent(eventValue, eventName);
+    }
+```
+
 ## Gotchas! 🤔
 
 ## Housekeeping 🛋

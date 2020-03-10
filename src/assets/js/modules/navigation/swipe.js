@@ -1,4 +1,4 @@
-import { activateCurrentSlide, disableMenus, slides } from './actions';
+import { activateCurrentSlide, disableMenus, slideConfig } from './actions';
 
 const calculateMeetingMinimumDistance = (options) => {
   let { distance } = options;
@@ -13,30 +13,27 @@ const handleGesture = async (event, options) => {
   const { target } = event;
   const { slide } = target.closest('[data-slide]').dataset;
 
-  slides.current = parseInt(slide, 10);
+  slideConfig.current = parseInt(slide, 10);
 
-  slides.leftToRight = options.touchstartX < options.touchendX;
-  slides.rightToLeft = options.touchstartX > options.touchendX;
+  slideConfig.leftToRight = options.touchstartX < options.touchendX;
+  slideConfig.rightToLeft = options.touchstartX > options.touchendX;
 
-  slides.hasMetMinimumDistance = calculateMeetingMinimumDistance(options);
+  slideConfig.hasMetMinimumDistance = calculateMeetingMinimumDistance(options);
 
-  slides.canGoPrev = slides.current > slides.first;
-  slides.canGoNext = slides.current < slides.last;
+  slideConfig.canGoPrev = slideConfig.current > slideConfig.first;
+  slideConfig.canGoNext = slideConfig.current < slideConfig.last;
 
-  slides.isSwipeNext = slides.isRotated ? slides.leftToRight : slides.rightToLeft;
-  slides.isSwipePrev = slides.isRotated ? slides.rightToLeft : slides.leftToRight;
+  slideConfig.isSwipeNext = slideConfig.isRotated ? slideConfig.leftToRight : slideConfig.rightToLeft;
+  slideConfig.isSwipePrev = slideConfig.isRotated ? slideConfig.rightToLeft : slideConfig.leftToRight;
 
-  const id = { current: slides.current, target: slides.current };
-  let variant;
+  const id = { current: slideConfig.current, target: slideConfig.current };
 
-  if (slides.isSwipePrev && slides.hasMetMinimumDistance) {
-    id.target = slides.canGoPrev ? slides.current - 1 : id.current;
-    variant = 'swipe_prev';
+  if (slideConfig.isSwipePrev && slideConfig.hasMetMinimumDistance) {
+    id.target = slideConfig.canGoPrev ? slideConfig.current - 1 : id.current;
   }
 
-  if (slides.isSwipeNext && slides.hasMetMinimumDistance) {
-    id.target = slides.canGoNext ? slides.current + 1 : id.current;
-    variant = 'swipe_next';
+  if (slideConfig.isSwipeNext && slideConfig.hasMetMinimumDistance) {
+    id.target = slideConfig.canGoNext ? slideConfig.current + 1 : id.current;
   }
 
   await disableMenus();
