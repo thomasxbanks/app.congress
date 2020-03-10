@@ -18,6 +18,10 @@ const context = {
   copy,
   slides,
   config: {
+    dop: {
+      code: 'QWERTYUIOP',
+      date: '1st Jan 1970',
+    },
     delay: 10000, // in milliseconds
   },
 };
