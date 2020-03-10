@@ -10,30 +10,35 @@ const calculateMeetingMinimumDistance = (options) => {
 };
 
 const handleGesture = async (event, options) => {
+  // console.log('swipe:handleGesture', _);
+  const _ = slideConfig;
   const { target } = event;
   const { slide } = target.closest('[data-slide]').dataset;
 
-  slideConfig.current = parseInt(slide, 10);
+  const isRotated = document.querySelector('[data-rotated]').dataset.rotated === 'true';
+  _.isRotated = isRotated;
 
-  slideConfig.leftToRight = options.touchstartX < options.touchendX;
-  slideConfig.rightToLeft = options.touchstartX > options.touchendX;
+  _.current = parseInt(slide, 10);
 
-  slideConfig.hasMetMinimumDistance = calculateMeetingMinimumDistance(options);
+  _.leftToRight = options.touchstartX < options.touchendX;
+  _.rightToLeft = options.touchstartX > options.touchendX;
 
-  slideConfig.canGoPrev = slideConfig.current > slideConfig.first;
-  slideConfig.canGoNext = slideConfig.current < slideConfig.last;
+  _.hasMetMinimumDistance = calculateMeetingMinimumDistance(options);
 
-  slideConfig.isSwipeNext = slideConfig.isRotated ? slideConfig.leftToRight : slideConfig.rightToLeft;
-  slideConfig.isSwipePrev = slideConfig.isRotated ? slideConfig.rightToLeft : slideConfig.leftToRight;
+  _.canGoPrev = _.current > _.first;
+  _.canGoNext = _.current < _.last;
 
-  const id = { current: slideConfig.current, target: slideConfig.current };
+  _.isSwipeNext = _.isRotated ? _.leftToRight : _.rightToLeft;
+  _.isSwipePrev = _.isRotated ? _.rightToLeft : _.leftToRight;
 
-  if (slideConfig.isSwipePrev && slideConfig.hasMetMinimumDistance) {
-    id.target = slideConfig.canGoPrev ? slideConfig.current - 1 : id.current;
+  const id = { current: _.current, target: _.current };
+
+  if (_.isSwipePrev && _.hasMetMinimumDistance) {
+    id.target = _.canGoPrev ? _.current - 1 : id.current;
   }
 
-  if (slideConfig.isSwipeNext && slideConfig.hasMetMinimumDistance) {
-    id.target = slideConfig.canGoNext ? slideConfig.current + 1 : id.current;
+  if (_.isSwipeNext && _.hasMetMinimumDistance) {
+    id.target = _.canGoNext ? _.current + 1 : id.current;
   }
 
   await disableMenus();

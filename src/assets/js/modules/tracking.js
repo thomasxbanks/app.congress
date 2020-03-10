@@ -6,7 +6,7 @@ let currentSessionId;
 const trackingURL = document.documentElement.dataset.trackingurl || 'http://localhost:8080';
 
 export const trackingLogEvent = (page, source) => {
-  console.log('trackingLogEvent', page, source);
+  // console.log('trackingLogEvent', page, source);
   fetch(`${trackingURL}/log/${currentSessionId}/${page}/${source}`, {
     method: 'POST',
     headers: {
